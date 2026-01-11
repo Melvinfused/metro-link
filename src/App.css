@@ -1,0 +1,182 @@
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Global Disabled State */
+button:disabled,
+.disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+
+.app-container {
+  position: absolute;
+  top: 6vh;
+  left: 8vw;
+  z-index: 1;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 900px;
+  animation: fadeInText 1.5s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-image:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+.app-container h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Server Status - Top Right */
+.server-status {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  /* Reset server status to handle its own positioning again since we removed the wrapper */
+}
+
+/* Start Menu Controls - Bottom Left */
+.start-menu-controls {
+  position: fixed;
+  bottom: 4vh;
+  left: 2vw;
+  display: flex;
+  flex-direction: column-reverse;
+  /* Stack upwards like Start Menu */
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Adjust tiles grid to make room for controls */
+/* Adjust tiles grid to make room for controls */
+.tiles-grid {
+  position: absolute;
+  left: calc(2vw + 60px);
+  /* Start lower to avoid text (Greeting is at 6vh) */
+  top: 19vh;
+  bottom: 8vh;
+  /* Slightly above controls */
+  right: 0;
+  padding-left: 20px;
+  padding-right: 5vw;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  overflow-x: auto;
+  align-items: flex-end;
+  /* Align to bottom */
+  /* Remove fixed height, let top/bottom define it */
+  height: auto;
+  /* Remove scrollbars */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tiles-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Re-enable pointer events for content */
+.tile-section {
+  pointer-events: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Align content to bottom like Start Menu */
+}
+
+
+/* Tile Section */
+.tile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0 5px;
+  margin-bottom: 5px;
+}
+
+.section-tiles {
+  display: grid;
+  /* Auto-fill rows based on container height (approx 85vh) */
+  /* We fix the rows to fit content nicely */
+  grid-template-rows: repeat(auto-fill, 70px);
+  /* Columns are added implicitly */
+  grid-auto-columns: 70px;
+  grid-auto-flow: column dense;
+  gap: 10px;
+
+  /* Horizontal expansion */
+  width: auto;
+  height: 100%;
+
+  /* Scrolling handled by parent .tiles-grid, so no scroll here */
+  overflow: visible;
+  align-content: start;
+}
+
+/* Hide section titles on mobile (Phones only, Tablets get desktop view) */
+@media (max-width: 480px) {
+  .section-title {
+    display: none;
+  }
+
+  .tiles-grid {
+    gap: 15px;
+  }
+}

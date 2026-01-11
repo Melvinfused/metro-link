@@ -1,0 +1,104 @@
+/* Server Status Indicator */
+.server-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    color: #aaa;
+    pointer-events: none;
+    height: 48px;
+    /* Match height of settings icon */
+    box-sizing: border-box;
+}
+
+/* Connecting state */
+.server-status.connecting .status-text {
+    color: #888;
+}
+
+.dots {
+    display: inline-block;
+    width: 18px;
+    text-align: left;
+}
+
+/* Online state */
+.server-status.online .status-text {
+    color: #47ffdd;
+}
+
+.server-status.online .wifi-icon {
+    color: #47ffdd;
+}
+
+/* Offline state */
+.server-status.offline {
+    animation: flashOffline 1s infinite ease-in-out;
+}
+
+.server-status.offline .status-text {
+    color: #ff4757;
+}
+
+.server-status.offline .wifi-icon {
+    color: #ff4757;
+}
+
+@keyframes flashOffline {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Spinner */
+.loader-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #333;
+    border-top-color: #47ffdd;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* WiFi icon */
+.wifi-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wifi-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.wifi-icon.offline svg {
+    position: relative;
+}
+
+.wifi-icon.offline::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #ff4757;
+    transform: rotate(-45deg);
+}

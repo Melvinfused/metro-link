@@ -1,0 +1,44 @@
+.arrange-button {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.arrange-button:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.arrange-button:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.arrange-button.active {
+    background-color: rgba(71, 255, 221, 0.2);
+    border-color: #47ffdd;
+    color: #47ffdd;
+    box-shadow: 0 0 15px rgba(71, 255, 221, 0.3);
+}
+
+.arrange-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.arrange-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

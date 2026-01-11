@@ -1,0 +1,118 @@
+.windows-loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    min-width: 0;
+    background-color: transparent;
+    gap: 20px;
+}
+
+.windows-loader {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.loader-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #ffffff;
+    letter-spacing: 1px;
+    animation: pulseText 2s infinite;
+}
+
+@keyframes pulseText {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    margin-top: -2.5px;
+    margin-left: -2.5px;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: windows-spin 3.5s infinite linear;
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.dot:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+@keyframes windows-spin {
+    0% {
+        transform: rotate(225deg) translateX(-25px);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+
+    7% {
+        transform: rotate(345deg) translateX(-25px);
+        animation-timing-function: linear;
+    }
+
+    30% {
+        transform: rotate(455deg) translateX(-25px);
+        animation-timing-function: ease-in-out;
+    }
+
+    39% {
+        transform: rotate(690deg) translateX(-25px);
+        animation-timing-function: linear;
+        opacity: 1;
+    }
+
+    70% {
+        transform: rotate(815deg) translateX(-25px);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+
+    75% {
+        transform: rotate(945deg) translateX(-25px);
+        animation-timing-function: linear;
+    }
+
+    76% {
+        transform: rotate(945deg) translateX(-25px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(945deg) translateX(-25px);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Link 1",
+    "icon": "🔗",
+    "size": "medium",
+    "message": "Check out my latest work!",
+    "url": ""
+  },
+  {
+    "title": "Link 2",
+    "icon": "📱",
+    "size": "small",
+    "url": ""
+  },
+  {
+    "title": "Link 3",
+    "icon": "💼",
+    "size": "small",
+    "message": "Now hiring!",
+    "url": ""
+  },
+  {
+    "title": "Link 4",
+    "icon": "🎨",
+    "size": "wide",
+    "message": "New portfolio pieces added this week",
+    "url": ""
+  },
+  {
+    "title": "Link 5",
+    "icon": "📧",
+    "size": "medium",
+    "message": "Get in touch for collaborations",
+    "url": ""
+  },
+  {
+    "title": "Link 6",
+    "icon": "🌐",
+    "size": "small",
+    "url": ""
+  }
+]
