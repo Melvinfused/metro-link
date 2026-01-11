@@ -1,0 +1,49 @@
+{
+  "sections": [
+    {
+      "name": "Socials",
+      "tiles": [
+        {
+          "title": "Instagram",
+          "icon": "/uploads/iconImage-1768145678215-750961564.png",
+          "url": "https://www.instagram.com/melviedoesthinqs/",
+          "size": "small",
+          "message": "",
+          "accentColor": ""
+        },
+        {
+          "title": "Spotify",
+          "icon": "/uploads/iconImage-1768145701396-328289317.png",
+          "url": "https://open.spotify.com/user/21yai5bg5iq6vqhp2secmkmoi",
+          "size": "wide",
+          "message": "",
+          "accentColor": ""
+        },
+        {
+          "title": "Facebook",
+          "icon": "/uploads/iconImage-1768145960482-435856936.png",
+          "url": "https://www.facebook.com/profile.php?id=100008298668879",
+          "size": "tiny",
+          "message": "",
+          "accentColor": ""
+        },
+        {
+          "title": "Pinterest",
+          "icon": "/uploads/iconImage-1768146522221-528941004.png",
+          "url": "https://in.pinterest.com/melvinfrancy/",
+          "size": "tiny",
+          "message": "",
+          "accentColor": ""
+        }
+      ]
+    },
+    {
+      "name": "Professional",
+      "tiles": []
+    },
+    {
+      "name": "Side Quests",
+      "tiles": []
+    }
+  ]
+}
