@@ -1,6 +1,8 @@
 // Use backend API in development, static files in production
 const IS_PRODUCTION = import.meta.env.PROD;
 const API_URL = IS_PRODUCTION ? '' : 'http://localhost:3001/api';
+// GitHub Pages base path
+const PRODUCTION_BASE = '/metro-link/';
 
 const TileAPI = {
     checkHealth: async () => {
