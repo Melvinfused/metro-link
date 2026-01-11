@@ -37,16 +37,13 @@ function App() {
   useEffect(() => {
     async function loadData() {
       try {
-        // Load tiles
-        const tilesResponse = await fetch('/tiles.json');
-        if (tilesResponse.ok) {
-          const data = await tilesResponse.json();
-          // Migration: If data is flat array, wrap in default section
-          if (Array.isArray(data)) {
-            setSections([{ name: 'Links', tiles: data }]);
-          } else if (data.sections) {
-            setSections(data.sections);
-          }
+        // Load tiles using API service (handles dev/prod paths)
+        const data = await TileAPI.getTiles();
+        // Migration: If data is flat array, wrap in default section
+        if (Array.isArray(data)) {
+          setSections([{ name: 'Links', tiles: data }]);
+        } else if (data.sections) {
+          setSections(data.sections);
         }
 
         // Load profile
