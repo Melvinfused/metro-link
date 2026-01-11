@@ -39,49 +39,51 @@ const TileAPI = {
     },
 
     getTiles: async () => {
-        // Always try to load from static file first
+        // In development, use backend API
+        if (!IS_PRODUCTION) {
+            const response = await fetch(`${API_URL}/tiles`);
+            if (!response.ok) throw new Error('Failed to fetch tiles');
+            return await response.json();
+        }
+
+        // In production, try static file first
         try {
-            const response = await fetch('/tiles.json');
+            const baseUrl = import.meta.env.BASE_URL || '/';
+            const response = await fetch(`${baseUrl}tiles.json`);
             if (response.ok) return await response.json();
         } catch (e) {
-            console.log('Could not load tiles.json');
+            console.log('Could not load tiles.json', e);
         }
 
         // Fallback to localStorage in production
-        if (IS_PRODUCTION) {
-            const stored = localStorage.getItem('tiles');
-            if (stored) return JSON.parse(stored);
-            return { sections: [] };
-        }
-
-        // In development, try backend
-        const response = await fetch(`${API_URL}/tiles`);
-        if (!response.ok) throw new Error('Failed to fetch tiles');
-        return await response.json();
+        const stored = localStorage.getItem('tiles');
+        if (stored) return JSON.parse(stored);
+        return { sections: [] };
     },
 
     getProfile: async () => {
-        // Try static file first
+        // In development, use backend API
+        if (!IS_PRODUCTION) {
+            const response = await fetch(`${API_URL}/profile`);
+            if (!response.ok) {
+                return { name: "Melvin Francy", image: null };
+            }
+            return await response.json();
+        }
+
+        // In production, try static file first
         try {
-            const response = await fetch('/profile.json');
+            const baseUrl = import.meta.env.BASE_URL || '/';
+            const response = await fetch(`${baseUrl}profile.json`);
             if (response.ok) return await response.json();
         } catch (e) {
-            console.log('Could not load profile.json');
+            console.log('Could not load profile.json', e);
         }
 
         // Fallback to localStorage in production
-        if (IS_PRODUCTION) {
-            const stored = localStorage.getItem('profile');
-            if (stored) return JSON.parse(stored);
-            return { name: "My Portfolio", image: null };
-        }
-
-        // In development, try backend
-        const response = await fetch(`${API_URL}/profile`);
-        if (!response.ok) {
-            return { name: "Melvin Francy", image: null };
-        }
-        return await response.json();
+        const stored = localStorage.getItem('profile');
+        if (stored) return JSON.parse(stored);
+        return { name: "My Portfolio", image: null };
     },
 
     saveProfile: async (profile) => {
