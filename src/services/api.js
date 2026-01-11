@@ -48,10 +48,9 @@ const TileAPI = {
             return await response.json();
         }
 
-        // In production, try static file first
+        // In production, try static file with GitHub Pages base path
         try {
-            const baseUrl = import.meta.env.BASE_URL || '/';
-            const response = await fetch(`${baseUrl}tiles.json`);
+            const response = await fetch(`${PRODUCTION_BASE}tiles.json`);
             if (response.ok) return await response.json();
         } catch (e) {
             console.log('Could not load tiles.json', e);
@@ -73,10 +72,9 @@ const TileAPI = {
             return await response.json();
         }
 
-        // In production, try static file first
+        // In production, try static file with GitHub Pages base path
         try {
-            const baseUrl = import.meta.env.BASE_URL || '/';
-            const response = await fetch(`${baseUrl}profile.json`);
+            const response = await fetch(`${PRODUCTION_BASE}profile.json`);
             if (response.ok) return await response.json();
         } catch (e) {
             console.log('Could not load profile.json', e);

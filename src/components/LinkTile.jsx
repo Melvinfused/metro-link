@@ -1,5 +1,17 @@
 import './LinkTile.css';
 
+// Helper function to get correct image path for production
+const getImageUrl = (path) => {
+    if (!path) return path;
+    const IS_PRODUCTION = import.meta.env.PROD;
+    const PRODUCTION_BASE = '/metro-link/';
+    // If in production and path starts with /uploads/, prepend base path
+    if (IS_PRODUCTION && path.startsWith('/uploads/')) {
+        return PRODUCTION_BASE.replace(/\/$/, '') + path;
+    }
+    return path;
+};
+
 const LinkTile = ({
     title, icon, url, size = 'medium', message, index = 0, accentColor,
     draggable, onDragStart, onDragEnd, isArranging
@@ -34,7 +46,7 @@ const LinkTile = ({
                 <div className="tile-front">
                     <div className="tile-icon">
                         {icon && icon.startsWith('/uploads/') ? (
-                            <img src={icon} alt={title} />
+                            <img src={getImageUrl(icon)} alt={title} />
                         ) : (
                             icon
                         )}
