@@ -51,9 +51,9 @@
         {
           "title": "Portfolio",
           "icon": "/uploads/iconImage-1768216177880-132936351.png",
-          "url": "vinfused.github.io/",
+          "url": "https://melvin-francy.vercel.app/",
           "size": "medium",
-          "message": "",
+          "message": "Visit my Tech Portfolio.",
           "accentColor": "#630c67"
         },
         {
