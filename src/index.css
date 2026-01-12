@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Segoe MDL2 Assets';
+  src: url('./icons/segmdl2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
