@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Background from './components/Background';
 import LinkTile from './components/LinkTile';
 import SettingsIcon from './components/SettingsIcon';
@@ -10,9 +10,11 @@ import ShutdownOverlay from './components/ShutdownOverlay';
 import ProfilePicture from './components/ProfilePicture';
 import ArrangeButton from './components/ArrangeButton';
 import BioWindow from './components/BioWindow';
+import MobileView from './components/MobileView';
 import TileAPI from './services/api';
 import './App.css';
 import WindowsLoader from './components/WindowsLoader';
+import MusicTile from './components/MusicTile';
 
 function App() {
   const [sections, setSections] = useState([]);
@@ -25,13 +27,14 @@ function App() {
   const [serverAvailable, setServerAvailable] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isShuttingDown, setIsShuttingDown] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const handleServerStatusChange = (isOnline) => {
+  const handleServerStatusChange = useCallback((isOnline) => {
     setServerAvailable(isOnline);
     if (!isOnline) {
       setIsArranging(false); // Disable arrange mode if server goes offline
     }
-  };
+  }, []);
 
   // Load tiles and profile on mount
   useEffect(() => {
@@ -63,6 +66,17 @@ function App() {
 
     loadData();
   }, [serverAvailable]);
+
+  // Mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleSettingsClick = () => {
     setPinMode('settings');
@@ -195,7 +209,23 @@ function App() {
     );
   }
 
-  // Flatten all tiles for index calculation (for animation delay)
+  // Render mobile layout for small screens
+  if (isMobile) {
+    return (
+      <>
+        <Background />
+        <MobileView
+          sections={sections}
+          profile={profile}
+          onPowerClick={handlePowerClick}
+          serverAvailable={serverAvailable}
+        />
+        {isShuttingDown && <ShutdownOverlay onComplete={handleShutdownComplete} />}
+      </>
+    );
+  }
+
+  // Flatten all tiles for index calculation (for animation delay) - Desktop only
   let globalIndex = 0;
 
   return (
@@ -246,6 +276,10 @@ function App() {
                   </div>
                 );
               })}
+              {/* Hardcoded Music Tile for Side Quests/Other section */}
+              {(section.name.toLowerCase() === 'side quests' || section.name.toLowerCase() === 'other') && (
+                <MusicTile />
+              )}
             </div>
           </div>
         ))}

@@ -1,0 +1,88 @@
+.message-tile {
+    grid-column: span 3;
+    grid-row: span 2;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.2s cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 0.2s ease;
+}
+
+.message-tile:active {
+    transform: scale(0.97);
+}
+
+.message-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.message-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.message-icon {
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.message-tile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    padding-top: 10px;
+}
+
+.message-greeting {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.2;
+    position: relative;
+    top: -26px;
+    /* move up */
+}
+
+.message-sender {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    /* Greyed out */
+    margin-top: 2px;
+    position: relative;
+    top: -28px;
+    /* move up */
+}
+
+.message-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.message-app-name {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.3px;
+}

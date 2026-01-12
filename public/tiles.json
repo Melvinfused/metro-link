@@ -34,12 +34,45 @@
           "size": "tiny",
           "message": "",
           "accentColor": ""
+        },
+        {
+          "title": "Mail",
+          "icon": "/uploads/iconImage-1768215893743-730906180.png",
+          "url": "thomasfrancymoothedath0@gmail.com",
+          "size": "tiny",
+          "message": "",
+          "accentColor": ""
         }
       ]
     },
     {
       "name": "Professional",
-      "tiles": []
+      "tiles": [
+        {
+          "title": "Portfolio",
+          "icon": "/uploads/iconImage-1768216177880-132936351.png",
+          "url": "vinfused.github.io/",
+          "size": "medium",
+          "message": "",
+          "accentColor": "#630c67"
+        },
+        {
+          "title": "Github",
+          "icon": "/uploads/iconImage-1768216276542-887008156.png",
+          "url": "https://github.com/Melvinfused",
+          "size": "wide",
+          "message": "",
+          "accentColor": ""
+        },
+        {
+          "title": "LinkedIn",
+          "icon": "/uploads/iconImage-1768216415477-574093142.png",
+          "url": "https://www.linkedin.com/in/melvinfrancy/",
+          "size": "small",
+          "message": "",
+          "accentColor": ""
+        }
+      ]
     },
     {
       "name": "Side Quests",

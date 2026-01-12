@@ -1,0 +1,183 @@
+.music-tile {
+    grid-column: span 4;
+    grid-row: span 2;
+    perspective: 1000px;
+    cursor: default;
+    background-color: transparent;
+}
+
+.music-tile .tile-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    animation: musicTileFlip 10s infinite ease-in-out;
+}
+
+.music-tile:active .tile-inner {
+    transform: scale(0.97);
+}
+
+@keyframes musicTileFlip {
+
+    0%,
+    45% {
+        transform: rotateX(0deg);
+    }
+
+    50%,
+    95% {
+        transform: rotateX(180deg);
+    }
+
+    100% {
+        transform: rotateX(360deg);
+    }
+}
+
+.tile-front,
+.tile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    /* Ensure radius is applied here */
+}
+
+/* Front Side: Controls & Label */
+.tile-front {
+    z-index: 2;
+    /* Ensure front is above back in stacking context */
+    pointer-events: auto;
+}
+
+/* Back Side: Track Info */
+.tile-back {
+    transform: rotateX(180deg);
+    z-index: 1;
+    pointer-events: none;
+    /* Prevent blocking clicks when flipped away */
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    /* Space for label */
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+    flex-shrink: 0;
+}
+
+.control-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.control-btn:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.play-btn {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.play-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.music-footer {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+}
+
+.music-app-name {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.3px;
+}
+
+/* Back Content Styling */
+.music-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 0 5px;
+}
+
+.album-art {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: auto;
+    flex-grow: 1;
+    overflow: hidden;
+    margin-bottom: 45px;
+    /* Move details up more */
+}
+
+.track-title {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0;
+}
+
+.track-artist {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+}

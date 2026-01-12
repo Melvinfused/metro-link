@@ -1,0 +1,241 @@
+.action-center-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2998;
+    animation: fadeIn 0.3s ease;
+}
+
+.action-center {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 2999;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.action-center.open {
+    transform: translateY(0);
+}
+
+.action-center-content {
+    padding: 60px 15px 20px;
+}
+
+/* Quick Settings - Single Row */
+.quick-settings {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+.quick-settings-row {
+    display: grid;
+    grid-template-columns: repeat(4, 75px);
+    gap: 22px;
+    /* Fixed gap between buttons */
+    justify-content: start;
+    /* Don't stretch to fill width */
+}
+
+.quick-setting-button {
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 80px;
+    height: 50px;
+
+    padding: 6px;
+    cursor: pointer;
+
+    transition: background-color 0.15s ease;
+
+    position: relative;
+}
+
+.quick-setting-button.active {
+    background: #00bcd4;
+}
+
+.quick-setting-button.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.quick-setting-button:not(.disabled):active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.quick-setting-button.active:active {
+    background: #00acc1;
+}
+
+.quick-setting-icon {
+    font-family: 'Segoe MDL2 Assets';
+    font-size: 0.85rem;
+    /* ~13–14px */
+    color: #ffffff;
+
+    position: absolute;
+    top: 6px;
+    left: 6px;
+
+    line-height: 1;
+}
+
+.quick-setting-label {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.55rem;
+    /* ~9px (Windows-accurate) */
+    font-weight: 400;
+    color: #ffffff;
+
+    text-align: left;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+
+    text-transform: uppercase;
+    opacity: 0.85;
+
+    pointer-events: none;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0 5px;
+}
+
+.action-button {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-button:active {
+    opacity: 0.7;
+}
+
+.action-icon {
+    font-size: 1rem;
+}
+
+/* Notifications List */
+.notifications-list {
+    margin-top: 10px;
+}
+
+.notification-card {
+    background: #000000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 10px;
+    margin-bottom: 0;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.notification-icon {
+    font-family: 'Segoe MDL2 Assets';
+    font-size: 1.2rem;
+}
+
+.notification-app-name {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.notification-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.notification-text {
+    flex: 1;
+}
+
+.notification-title {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.notification-body {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.3;
+}
+
+.notification-time {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    padding-top: 2px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hide scrollbar */
+.action-center::-webkit-scrollbar {
+    display: none;
+}
+
+.action-center {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}

@@ -1,0 +1,111 @@
+.status-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 15px;
+    padding-top: 8px;
+    z-index: 3000;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 12px;
+    transition: height 0.3s ease, background 0.3s ease;
+}
+
+.status-bar.expanded {
+    height: 55px;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: flex-start;
+    padding-top: 8px;
+}
+
+.status-bar-left,
+.status-bar-right {
+    display: flex;
+    align-items: flex-start;
+}
+
+.status-bar-left {
+    gap: 0;
+}
+
+.status-bar-right {
+    gap: 12px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.status-icon {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.status-icon.mdl2 {
+    font-family: 'Segoe MDL2 Assets';
+    font-size: 13px;
+}
+
+.battery-icon {
+    font-size: 18px !important;
+    position: relative;
+    top: -5px;
+}
+
+.status-time {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.status-label {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.status-item:has(.battery-icon) {
+    gap: 0px;
+}
+
+.battery-icon+.status-label {
+    position: relative;
+    top: -5.5px;
+}
+
+/* Default state: Airplane */
+.airplane-status .status-icon {
+    position: relative;
+    left: 0;
+    transition: left 0.3s ease;
+}
+
+/* Default state: WiFi */
+.wifi-status .status-icon {
+    position: relative;
+    left: 5px;
+    transition: left 0.3s ease;
+}
+
+/* Expanded state: Airplane */
+.status-bar.expanded .airplane-status .status-icon {
+    left: -20px;
+}
+
+/* Expanded state: WiFi */
+.status-bar.expanded .wifi-status .status-icon {
+    left: -40px;
+}

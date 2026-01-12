@@ -43,9 +43,11 @@ const ServerStatus = ({ onStatusChange }) => {
             }
         };
 
-        // Start checking after a brief delay for visual effect
-        const timer = setTimeout(checkServer, 1500);
-        return () => clearTimeout(timer);
+        // Check immediately and then poll
+        checkServer();
+        const interval = setInterval(checkServer, 5000); // Check every 5 seconds
+
+        return () => clearInterval(interval);
     }, [onStatusChange]);
 
     return (
