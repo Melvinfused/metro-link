@@ -70,7 +70,7 @@ function App() {
   // Mobile detection
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 480);
+      setIsMobile(window.innerWidth <= 768);
     };
 
     checkMobile();

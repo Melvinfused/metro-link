@@ -171,7 +171,7 @@ button:disabled,
 }
 
 /* Hide section titles on mobile (Phones only, Tablets get desktop view) */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .section-title {
     display: none;
   }
