@@ -15,6 +15,7 @@ import TileAPI from './services/api';
 import './App.css';
 import WindowsLoader from './components/WindowsLoader';
 import MusicTile from './components/MusicTile';
+import GithubTile from './components/GithubTile';
 
 function App() {
   const [sections, setSections] = useState([]);
@@ -260,19 +261,28 @@ function App() {
                       handleDrop(e, sectionIndex, tileIndex);
                     } : undefined}
                   >
-                    <LinkTile
-                      title={tile.title}
-                      icon={tile.icon}
-                      url={tile.url}
-                      size={tile.size}
-                      message={tile.message}
-                      accentColor={tile.accentColor}
-                      index={idx}
-                      draggable={isArranging}
-                      onDragStart={(e) => handleDragStart(e, sectionIndex, tileIndex)}
-                      onDragEnd={handleDragEnd}
-                      isArranging={isArranging}
-                    />
+                    {/* Check if it's the GitHub tile */}
+                    {(tile.url?.includes('github.com') || tile.title === 'GitHub') ? (
+                      <GithubTile
+                        size={tile.size}
+                        icon={tile.icon}
+                        title={tile.title}
+                      />
+                    ) : (
+                      <LinkTile
+                        title={tile.title}
+                        icon={tile.icon}
+                        url={tile.url}
+                        size={tile.size}
+                        message={tile.message}
+                        accentColor={tile.accentColor}
+                        index={idx}
+                        draggable={isArranging}
+                        onDragStart={(e) => handleDragStart(e, sectionIndex, tileIndex)}
+                        onDragEnd={handleDragEnd}
+                        isArranging={isArranging}
+                      />
+                    )}
                   </div>
                 );
               })}

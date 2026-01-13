@@ -1,0 +1,95 @@
+.github-tile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.github-tile .tile-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Windows Phone Style: Auto flip every few seconds */
+    animation: githubLiveTile 10s ease-in-out infinite;
+}
+
+/* 
+   Animation Timeline (6s total):
+   0-45%: Front visible (static)
+   50-95%: Back visible (flipped)
+   100%: Reset to start (360 -> 0)
+*/
+@keyframes githubLiveTile {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    45% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(180deg);
+    }
+
+    95% {
+        transform: rotateX(180deg);
+    }
+
+    100% {
+        transform: rotateX(360deg);
+    }
+}
+
+.github-tile .tile-front,
+.github-tile .tile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    border-radius: 4px;
+}
+
+/* Front Side */
+.github-tile .tile-front {
+    transform: rotateX(0deg);
+    z-index: 2;
+}
+
+/* Back Side - Rotated 180deg on X axis for up/down flip */
+.github-tile .tile-back {
+    transform: rotateX(180deg);
+    /* background-color: #0d1117; Removed for transparency */
+    padding: 5px;
+    z-index: 1;
+}
+
+.github-heatmap {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(0.90);
+    /* Inverts to dark grey, slightly reduced to make it lighter */
+}
+
+/* Adjustments for different tile sizes */
+.github-tile.medium .github-heatmap {
+    transform: scale(1.1);
+}
+
+.github-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
