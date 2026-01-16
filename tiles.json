@@ -49,26 +49,26 @@
       "name": "Professional",
       "tiles": [
         {
-          "title": "Portfolio",
-          "icon": "/uploads/iconImage-1768216177880-132936351.png",
-          "url": "https://melvin-francy.vercel.app/",
-          "size": "medium",
-          "message": "Visit my Tech Portfolio.",
-          "accentColor": "#630c67"
-        },
-        {
-          "title": "Github",
-          "icon": "/uploads/iconImage-1768216276542-887008156.png",
+          "title": "GitHub",
+          "icon": "/uploads/iconImage-1768550681433-249695018.png",
           "url": "https://github.com/Melvinfused",
           "size": "wide",
           "message": "",
           "accentColor": ""
         },
         {
+          "title": "Portfolio",
+          "icon": "/uploads/iconImage-1768216177880-132936351.png",
+          "url": "https://melvin-francy.vercel.app/",
+          "size": "small",
+          "message": "Visit my Tech Portfolio.",
+          "accentColor": "#630c67"
+        },
+        {
           "title": "LinkedIn",
           "icon": "/uploads/iconImage-1768216415477-574093142.png",
           "url": "https://www.linkedin.com/in/melvinfrancy/",
-          "size": "small",
+          "size": "tiny",
           "message": "",
           "accentColor": ""
         }
