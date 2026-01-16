@@ -1,23 +1,28 @@
 import React from 'react';
 import './GithubTile.css';
+import githubIcon from '../icons/github.png';
 
-const GithubTile = ({ size = 'medium', icon, title }) => {
+const GithubTile = ({ size = 'medium', icon, title, index = 0 }) => {
+    // Stagger animation with prime number multiplier to prevent synchronization
+    const animationDelay = `${index * 1.7}s`;
+
     return (
         <a
             href="https://github.com/Melvinfused"
             target="_blank"
             rel="noopener noreferrer"
             className={`github-tile ${size}`}
+            style={{ '--animation-delay': animationDelay }}
         >
             <div className="tile-inner">
                 {/* Front Side */}
                 <div className="tile-front">
                     <div className="tile-icon">
-                        {/* Use provided icon or default to GitHub emoji/text if generic */}
+                        {/* Use provided icon or default to local GitHub icon */}
                         {icon && icon.startsWith('/uploads/') ? (
                             <img src={icon} alt="GitHub" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                         ) : (
-                            <span style={{ fontSize: '2.5rem' }}>{icon || '🐙'}</span>
+                            <img src={githubIcon} alt="GitHub" style={{ maxWidth: '60%', maxHeight: '60%', objectFit: 'contain' }} />
                         )}
                     </div>
                     <div className="tile-title">

@@ -267,6 +267,7 @@ function App() {
                         size={tile.size}
                         icon={tile.icon}
                         title={tile.title}
+                        index={idx}
                       />
                     ) : (
                       <LinkTile

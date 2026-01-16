@@ -12,16 +12,28 @@ const getImageUrl = (path) => {
     return path;
 };
 
+// Helper function to convert hex color to rgba with low opacity for tinting effect
+const hexToRgba = (hex, alpha = 0.3) => {
+    if (!hex) return null;
+    // Remove # if present
+    hex = hex.replace('#', '');
+    // Parse hex values
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 const LinkTile = ({
     title, icon, url, size = 'medium', message, index = 0, accentColor,
     draggable, onDragStart, onDragEnd, isArranging
 }) => {
-    const animationDelay = `${index * 0.1}s`;
+    const animationDelay = `${index * 1}s`;
 
     // Apply accent color variable if provided
     const style = {
         animationDelay,
-        ...(accentColor ? { '--tile-accent-color': accentColor } : {})
+        ...(accentColor ? { '--tile-accent-color': hexToRgba(accentColor, 0.3) } : {})
     };
 
     const handleClick = (e) => {
@@ -57,7 +69,13 @@ const LinkTile = ({
                 </div>
 
                 {message && (
-                    <div className="tile-back">
+                    <div
+                        className="tile-back"
+                        style={accentColor ? {
+                            backgroundColor: hexToRgba(accentColor, 0.3),
+                            borderColor: hexToRgba(accentColor, 0.6)
+                        } : {}}
+                    >
                         <div className="tile-message">
                             {message}
                         </div>

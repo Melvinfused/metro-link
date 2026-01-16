@@ -15,6 +15,7 @@
     height: 100%;
     /* Windows Phone Style: Auto flip every few seconds */
     animation: githubLiveTile 10s ease-in-out infinite;
+    animation-delay: var(--animation-delay, 0s);
 }
 
 /* 

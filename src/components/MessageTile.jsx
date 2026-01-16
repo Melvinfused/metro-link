@@ -2,7 +2,11 @@ import './MessageTile.css';
 
 const MessageTile = ({ name = "Melvin Francy" }) => {
     return (
-        <div className="message-tile">
+        <a
+            href="mailto:melvinfused@gmail.com"
+            className="message-tile"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+        >
             <div className="message-header">
                 <div className="message-header">
                     <svg className="message-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +26,7 @@ const MessageTile = ({ name = "Melvin Francy" }) => {
             <div className="message-footer">
                 <span className="message-app-name">Messaging</span>
             </div>
-        </div>
+        </a>
     );
 };
 

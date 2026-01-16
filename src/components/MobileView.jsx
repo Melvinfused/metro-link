@@ -6,6 +6,7 @@ import ProfileTile from './ProfileTile';
 import MobileDock from './MobileDock';
 import ActionCenter from './ActionCenter';
 import LinkTile from './LinkTile';
+import GithubTile from './GithubTile';
 import './MobileView.css';
 
 const MobileView = ({ sections, profile, onPowerClick, serverAvailable }) => {
@@ -86,22 +87,38 @@ const MobileView = ({ sections, profile, onPowerClick, serverAvailable }) => {
                     <ProfileTile image={profile.image} name={profile.name} bio={profile.bio} />
 
                     {/* All tiles from sections */}
-                    {allTiles.map((tile, index) => (
-                        <div
-                            key={index}
-                            className={`mobile-tile-wrapper ${tile.size || 'medium'}`}
-                        >
-                            <LinkTile
-                                title={tile.title}
-                                icon={tile.icon}
-                                url={tile.url}
-                                size={tile.size}
-                                message={tile.message}
-                                accentColor={tile.accentColor}
-                                index={index}
-                            />
-                        </div>
-                    ))}
+
+
+                    {allTiles.map((tile, index) => {
+                        const isGithub = tile.url?.includes('github.com') || tile.title === 'GitHub';
+                        // Force 'github-wide' size for GitHub tile on mobile, otherwise use tile.size
+                        const wrapperSize = isGithub ? 'github-wide' : (tile.size || 'medium');
+
+                        return (
+                            <div
+                                key={index}
+                                className={`mobile-tile-wrapper ${wrapperSize}`}
+                            >
+                                {isGithub ? (
+                                    <GithubTile
+                                        size="wide"
+                                        icon={tile.icon}
+                                        title={tile.title}
+                                    />
+                                ) : (
+                                    <LinkTile
+                                        title={tile.title}
+                                        icon={tile.icon}
+                                        url={tile.url}
+                                        size={tile.size}
+                                        message={tile.message}
+                                        accentColor={tile.accentColor}
+                                        index={index}
+                                    />
+                                )}
+                            </div>
+                        )
+                    })}
 
                     {/* Permanent Music Tile (Bottom) */}
                     <MusicTile />

@@ -61,6 +61,11 @@
     grid-row: span 2;
 }
 
+.mobile-tile-wrapper.github-wide {
+    grid-column: span 5;
+    grid-row: span 2;
+}
+
 .mobile-tile-wrapper.large {
     grid-column: span 5;
     grid-row: span 4;

@@ -14,6 +14,8 @@
     transition: transform 0.8s;
     transform-style: preserve-3d;
     animation: musicTileFlip 10s infinite ease-in-out;
+    animation-delay: 3.3s;
+    /* Unique offset to prevent synchronization */
 }
 
 .music-tile:active .tile-inner {
