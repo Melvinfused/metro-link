@@ -1,6 +1,5 @@
 import React from 'react';
 import './GithubTile.css';
-import githubIcon from '../icons/github.png';
 
 const GithubTile = ({ size = 'medium', icon, title, index = 0 }) => {
     // Stagger animation with prime number multiplier to prevent synchronization
@@ -18,11 +17,11 @@ const GithubTile = ({ size = 'medium', icon, title, index = 0 }) => {
                 {/* Front Side */}
                 <div className="tile-front">
                     <div className="tile-icon">
-                        {/* Use provided icon or default to local GitHub icon */}
+                        {/* Use provided icon or default to GitHub icon from public folder */}
                         {icon && icon.startsWith('/uploads/') ? (
                             <img src={icon} alt="GitHub" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                         ) : (
-                            <img src={githubIcon} alt="GitHub" style={{ maxWidth: '60%', maxHeight: '60%', objectFit: 'contain' }} />
+                            <img src="/icons/github.png" alt="GitHub" style={{ maxWidth: '60%', maxHeight: '60%', objectFit: 'contain' }} />
                         )}
                     </div>
                     <div className="tile-title">
